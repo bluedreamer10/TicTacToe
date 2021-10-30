@@ -135,18 +135,26 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
         //Checking for Diagonals!
             if (boardStatus[0][0] == boardStatus[1][1] && boardStatus[2][2] == boardStatus[1][1]) {
                 if (boardStatus[0][0] == 1) {
-                 updateText("Player X won!")
+                    updateText("Player X won!")
+                    disableButton()
+                } else if (boardStatus[0][0] == 0) {
+                    updateText("Player O won!")
                     disableButton()
                 }
+            }
 
-            if (boardStatus[0][2] == boardStatus[1][1] && boardStatus[2][0] == boardStatus[1][1] ){
-                if (boardStatus[0][2] == 0) {
+            if (boardStatus[0][2] == boardStatus[1][1] && boardStatus[1][1] == boardStatus[2][0] ){
+                if (boardStatus[0][2] == 1) {
+                    updateText("Player X won!")
+                    disableButton()
+                }
+                else if (boardStatus[0][2] == 0) {
                     updateText("Player O won!")
                     disableButton()
                 }
         }
     }
-    }
+
 
     private fun disableButton() {
         for(i: Array<Button> in board){
